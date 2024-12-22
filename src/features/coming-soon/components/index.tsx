@@ -6,6 +6,7 @@ import {
   CardHeader,
 } from "@/shared/components/ui/card";
 import { COMING_SOON_ELEMENT_ID } from "@/shared/constants";
+import GetUpdateButton from "./get-update-button";
 
 const ComingSoon = () => {
   return (
@@ -22,7 +23,7 @@ const ComingSoon = () => {
             who will get to top 5, and many more!
           </CardContent>
           <CardFooter>
-            <Button>Get Updates</Button>
+            <GetUpdateButton />
           </CardFooter>
         </Card>
         <Card>
