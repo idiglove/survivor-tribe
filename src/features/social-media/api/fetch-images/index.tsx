@@ -4,8 +4,7 @@ const fetchImages = async () => {
     {
       headers: {
         Accept: "application/json",
-        Authorization:
-          "Basic cHJpdmF0ZV9FKzI2cVV5YW5vdEVobklkcWkvcVV4eDY5d0E9Og==",
+        Authorization: `Basic ${process.env.IMAGE_KIT_API_KEY}`,
       },
     }
   );
