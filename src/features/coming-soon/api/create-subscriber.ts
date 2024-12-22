@@ -2,7 +2,7 @@
 const createSubscriber = async (email: string) => {
   const data = {
     email,
-    trigger_automation: false,
+    groups: ["ejLxDR"],
   };
   const response = await fetch("https://api.sender.net/v2/subscribers", {
     method: "POST",
