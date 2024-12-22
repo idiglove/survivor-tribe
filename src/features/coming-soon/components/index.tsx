@@ -34,7 +34,7 @@ const ComingSoon = () => {
             Get bite-sized nuggets on post tribal council interviews!
           </CardContent>
           <CardFooter>
-            <Button>Get Updates</Button>
+            <GetUpdateButton />
           </CardFooter>
         </Card>
         <Card>
@@ -48,7 +48,7 @@ const ComingSoon = () => {
             would play!
           </CardContent>
           <CardFooter>
-            <Button>Get Updates</Button>
+            <GetUpdateButton />
           </CardFooter>
         </Card>
       </div>
