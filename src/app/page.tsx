@@ -15,12 +15,12 @@ export default function Home() {
         />
         <HomepageHeader />
 
-        <div className="w-full max-w-[900px] mx-auto">
+        <div className="w-full max-w-[900px] mx-auto px-4">
           <SocialMediaPostSeason />
           <ComingSoon />
         </div>
       </main>
-      <footer className="py-5">
+      <footer className="p-5">
         <div className="w-full max-w-[900px] mx-auto text-center">
           <p>
             &copy; {new Date().getFullYear()} Survivor Tribe. All Rights

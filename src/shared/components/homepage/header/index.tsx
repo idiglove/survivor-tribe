@@ -9,8 +9,8 @@ import Logo from "@/assets/survivor-tribe-logo.png";
 
 const HomepageHeader = () => {
   return (
-    <header>
-      <div className="w-full max-w-[900px] mx-auto my-4 flex gap-4 justify-center">
+    <header className="text-center">
+      <div className="w-full max-w-[200px] md:max-w-[900px] mx-auto my-4 flex flex-col md:flex-row gap-4 justify-center">
         <ModalButton
           text="Who we are"
           dialogTitle="About the site creator"
