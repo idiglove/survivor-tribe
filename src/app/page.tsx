@@ -1,10 +1,11 @@
 import ComingSoon from "@/features/coming-soon/components";
 import { SocialMediaPostSeason } from "@/features/social-media/components/post-season";
 import HomepageHeader from "@/shared/components/homepage/header";
+import PostHogProvider from "@/shared/components/posthog-provider";
 
 export default function Home() {
   return (
-    <>
+    <PostHogProvider>
       <main>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -31,6 +32,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-    </>
+    </PostHogProvider>
   );
 }
