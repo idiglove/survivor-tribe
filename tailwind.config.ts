@@ -27,7 +27,7 @@ const config: Config = {
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "#ff8e1a",
           foreground: "hsl(var(--secondary-foreground))",
         },
         muted: {

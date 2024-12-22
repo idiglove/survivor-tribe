@@ -1,14 +1,16 @@
+import Image from "next/image";
 import ScrollButton from "../../scroll-button";
 import {
   COMING_SOON_ELEMENT_ID,
   POST_SEASON_PHOTOS_ELEMENT_ID,
 } from "@/shared/constants";
 import ModalButton from "../../modal-button";
+import Logo from "@/assets/survivor-tribe-logo.png";
 
 const HomepageHeader = () => {
   return (
     <header>
-      <div className="w-full max-w-[900px] mx-auto my-4 flex gap-4">
+      <div className="w-full max-w-[900px] mx-auto my-4 flex gap-4 justify-center">
         <ModalButton
           text="Who we are"
           dialogTitle="About the site creator"
@@ -31,8 +33,8 @@ const HomepageHeader = () => {
           elementId={COMING_SOON_ELEMENT_ID}
         />
       </div>
-      <div className="w-full h-full min-h-[500px] flex flex-col items-center justify-center gap-5">
-        <h1 className="text-5xl">Survivor Tribe</h1>
+      <div className="w-full h-full min-h-[300px] flex flex-col items-center justify-center gap-5">
+        <Image src={Logo} alt="Survivor Tribe Logo" width={400} />
         <h3>Get all updates about our favorite reality game show here!</h3>
       </div>
     </header>

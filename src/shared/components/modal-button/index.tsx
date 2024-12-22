@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button, ButtonProps } from "../ui/button";
 import {
   Dialog,
   DialogContent,
@@ -13,6 +13,7 @@ interface ModalButtonProps {
   dialogTitle: string;
   dialogDescription: string;
   dialogContent: React.ReactNode;
+  ButtonProps?: ButtonProps;
 }
 
 const ModalButton = ({
@@ -20,11 +21,12 @@ const ModalButton = ({
   dialogTitle,
   dialogDescription,
   dialogContent,
+  ButtonProps,
 }: ModalButtonProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>{text}</Button>
+        <Button {...ButtonProps}>{text}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
