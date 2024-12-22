@@ -1,15 +1,27 @@
-import { Button } from "@/shared/components/ui/button";
 import ScrollButton from "../../scroll-button";
 import {
   COMING_SOON_ELEMENT_ID,
   POST_SEASON_PHOTOS_ELEMENT_ID,
 } from "@/shared/constants";
+import ModalButton from "../../modal-button";
 
 const HomepageHeader = () => {
   return (
     <header>
       <div className="w-full max-w-[900px] mx-auto my-4 flex gap-4">
-        <Button>Who we are</Button>
+        <ModalButton
+          text="Who we are"
+          dialogTitle="About the site creator"
+          dialogDescription="I'm a Survivor fan who is dedicated to providing you with the latest updates on the show."
+          dialogContent={
+            <div>
+              <p>
+                For those willing to contribute to this fan site, hit me up on
+                Discord: lithia777
+              </p>
+            </div>
+          }
+        />
         <ScrollButton
           text="Post Season Photos"
           elementId={POST_SEASON_PHOTOS_ELEMENT_ID}
