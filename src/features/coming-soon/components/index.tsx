@@ -2,14 +2,14 @@ import { Button } from "@/shared/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
 } from "@/shared/components/ui/card";
+import { COMING_SOON_ELEMENT_ID } from "@/shared/constants";
 
 const ComingSoon = () => {
   return (
-    <>
+    <div id={COMING_SOON_ELEMENT_ID}>
       <h2 className="text-3xl font-bold text-left my-8">Coming soon!</h2>
       <div className="flex flex-col gap-6">
         <Card>
@@ -51,7 +51,7 @@ const ComingSoon = () => {
           </CardFooter>
         </Card>
       </div>
-    </>
+    </div>
   );
 };
 
