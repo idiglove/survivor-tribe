@@ -4,7 +4,7 @@ import { SocialMediaPostSeason } from "@/features/social-media/components/post-s
 import HomepageHeader from "@/shared/components/homepage/header";
 import PostHogProvider from "@/shared/components/posthog-provider";
 
-export default function Home() {
+export default function PodcastSummary() {
   return (
     <PostHogProvider>
       <main>

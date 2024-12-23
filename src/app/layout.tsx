@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Ubuntu } from "next/font/google";
+
+const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Survivor Tribe - Reality Game Show Fan Site",
@@ -13,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased ${ubuntu.className}`}>{children}</body>
     </html>
   );
 }
