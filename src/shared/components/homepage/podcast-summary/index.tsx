@@ -11,7 +11,7 @@ import Link from "next/link";
 const PodcastSummaryHomepage = () => {
   return (
     <div id={PODCAST_SUMMARY}>
-      <h2 className="text-3xl font-bold text-left my-8">Podcast Summary</h2>
+      <h2 className="text-3xl font-bold text-left my-8">5 minute Survivor Podcast Summary</h2>
       <Card>
         <CardHeader>
           <Link

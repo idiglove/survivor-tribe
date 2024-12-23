@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
 import HomepageHeader from "@/shared/components/homepage/header";
 
 export default async function PodcastSummary({
@@ -24,7 +23,7 @@ export default async function PodcastSummary({
       loading: () => <p>Loading...</p>,
     }
   );
-  
+
   return (
     <>
       <main>
