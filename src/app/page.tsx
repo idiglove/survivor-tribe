@@ -1,4 +1,5 @@
 import ComingSoon from "@/features/coming-soon/components";
+import ShopGallery from "@/features/merch/components/shop-gallery";
 import { SocialMediaPostSeason } from "@/features/social-media/components/post-season";
 import HomepageHeader from "@/shared/components/homepage/header";
 import PostHogProvider from "@/shared/components/posthog-provider";
@@ -17,6 +18,7 @@ export default function Home() {
 
         <div className="w-full max-w-[900px] mx-auto px-4">
           <SocialMediaPostSeason />
+          <ShopGallery />
           <ComingSoon />
         </div>
       </main>

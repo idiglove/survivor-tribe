@@ -3,6 +3,7 @@ import ScrollButton from "../../scroll-button";
 import {
   COMING_SOON_ELEMENT_ID,
   POST_SEASON_PHOTOS_ELEMENT_ID,
+  SURVIVOR_MERCH,
 } from "@/shared/constants";
 import ModalButton from "../../modal-button";
 import Logo from "@/assets/survivor-tribe-logo.png";
@@ -28,6 +29,10 @@ const HomepageHeader = () => {
           text="Post Season Photos"
           elementId={POST_SEASON_PHOTOS_ELEMENT_ID}
         />
+        <ScrollButton
+          text="Survivor Merch"
+          elementId={SURVIVOR_MERCH}
+        />        
         <ScrollButton
           text="Coming Soon Features"
           elementId={COMING_SOON_ELEMENT_ID}
