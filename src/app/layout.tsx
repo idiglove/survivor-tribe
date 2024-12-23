@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Ubuntu } from "next/font/google";
+import PostHogProvider from "@/shared/components/posthog-provider";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -20,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased ${ubuntu.className}`}>{children}</body>
+      <PostHogProvider>
+        <body className={`antialiased ${ubuntu.className}`}>{children}</body>
+      </PostHogProvider>
     </html>
   );
 }

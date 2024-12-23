@@ -1,7 +1,27 @@
-const SummaryView = () => {
+"use client";
+import { useEffect, useState } from "react";
+import ContentHeading from "../content-heading";
+import ReactPlayer from "react-player";
+
+const Season47FinaleRhap = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
-    <div>
-      <h2>Overview</h2>
+    <div className="flex flex-col gap-4 mt-8">
+      <h1 className="font-bold text-3xl text-center">
+        Why ___ Won (And the Others Lost) Survivor 47 - Summary
+      </h1>
+      <div className="flex justify-center">
+        {isClient && (
+          <ReactPlayer url="https://www.youtube.com/watch?v=6hjKMAJ-xDk" />
+        )}
+      </div>
+
+      <ContentHeading>Overview</ContentHeading>
       <p>
         The hosts, David and Jessica, dive deep into the thrilling finale of
         Survivor season 47, discussing why Rachel ultimately won and why Sam,
@@ -15,7 +35,7 @@ const SummaryView = () => {
         gameplay. David then breaks down the strategies of the final four, using
         his “rules for winning” to analyze each player's game.{" "}
       </p>
-      <h2>Rachel’s Winning Strategy</h2>
+      <ContentHeading>Rachel’s Winning Strategy</ContentHeading>
       <p>
         Rachel’s game stands out, especially her flexibility. She bounced back
         from early blindsides, cleverly used her idol, and maintained strong
@@ -24,14 +44,14 @@ const SummaryView = () => {
         control the narrative without appearing overly aggressive, helped her
         secure the win.
       </p>
-      <h2>Sam’s Game Analysis</h2>
+      <ContentHeading>Sam’s Game Analysis</ContentHeading>
       <p>
         Sam, while strategic, struggled with his alliances and social game.
         Despite his “scrappy” nature, he failed to check in with allies like
         Andy, and his inability to manage relationships led to his downfall. His
         emotional responses, although controlled at times, often backfired.
       </p>
-      <h2>Sue’s Under-the-Radar Approach</h2>
+      <ContentHeading>Sue’s Under-the-Radar Approach</ContentHeading>
       <p>
         Sue, on the other hand, played a loyal and under-the-radar game. Her
         inability to distance herself from stronger players like Caroline and
@@ -39,7 +59,7 @@ const SummaryView = () => {
         moves needed to win. Her focus on loyalty, though admirable, was seen as
         a weakness in the eyes of the jury.{" "}
       </p>
-      <h2>Tiny’s Social Game</h2>
+      <ContentHeading>Tiny’s Social Game</ContentHeading>
       <p>
         Teeny’s social game was their strength, but their emotional connections
         became their downfall. They were often left out of key decisions and
@@ -57,4 +77,4 @@ const SummaryView = () => {
   );
 };
 
-export default SummaryView;
+export default Season47FinaleRhap;

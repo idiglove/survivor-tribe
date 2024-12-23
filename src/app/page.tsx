@@ -2,11 +2,10 @@ import ComingSoon from "@/features/coming-soon/components";
 import ShopGallery from "@/features/merch/components/shop-gallery";
 import { SocialMediaPostSeason } from "@/features/social-media/components/post-season";
 import HomepageHeader from "@/shared/components/homepage/header";
-import PostHogProvider from "@/shared/components/posthog-provider";
 
 export default function Home() {
   return (
-    <PostHogProvider>
+    <>
       <main>
         <HomepageHeader />
 
@@ -28,6 +27,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-    </PostHogProvider>
+    </>
   );
 }
