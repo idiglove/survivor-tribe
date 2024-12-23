@@ -2,6 +2,7 @@ import ComingSoon from "@/features/coming-soon/components";
 import ShopGallery from "@/features/merch/components/shop-gallery";
 import { SocialMediaPostSeason } from "@/features/social-media/components/post-season";
 import HomepageHeader from "@/shared/components/homepage/header";
+import PodcastSummaryHomepage from "@/shared/components/homepage/podcast-summary";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <div className="w-full max-w-[900px] mx-auto px-4">
           <SocialMediaPostSeason />
           <ShopGallery />
+          <PodcastSummaryHomepage />
           <ComingSoon />
         </div>
       </main>
