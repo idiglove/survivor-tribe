@@ -11,8 +11,8 @@ export default function Home() {
       <main>
         <HomepageHeader />
 
-        <div className="w-full max-w-[1200px] mx-auto px-4 flex gap-16">
-          <div className="w-[80%]">
+        <div className="w-full max-w-[1200px] mx-auto px-4 flex flex-col sm:flex-row gap-16">
+          <div className="w-full sm:w-[60%] md:w-[80%]">
             <SocialMediaPostSeason />
             <ShopGallery />
             <PodcastSummaryHomepage />
