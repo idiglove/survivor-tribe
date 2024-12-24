@@ -11,7 +11,8 @@ const HomepageHeader = () => {
         <Link href="/">
           <Image src={Logo} alt="Survivor Tribe Logo" width={400} />
         </Link>
-        <h3>Get all updates about our favorite reality game show here!</h3>
+        <h3 className="font-bold">Get all updates about Survivor Season 47 and upcoming seasons!</h3>
+        <h4>Be a part of the ultimate Survivor Fan Community</h4>
       </div>
     </header>
   );
