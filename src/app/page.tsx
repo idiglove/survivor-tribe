@@ -1,6 +1,7 @@
 import ComingSoon from "@/features/coming-soon/components";
 import ShopGallery from "@/features/merch/components/shop-gallery";
 import { SocialMediaPostSeason } from "@/features/social-media/components/post-season";
+import WebUpdates from "@/features/web-updates/components";
 import HomepageHeader from "@/shared/components/homepage/header";
 import PodcastSummaryHomepage from "@/shared/components/homepage/podcast-summary";
 
@@ -10,11 +11,16 @@ export default function Home() {
       <main>
         <HomepageHeader />
 
-        <div className="w-full max-w-[900px] mx-auto px-4">
-          <SocialMediaPostSeason />
-          <ShopGallery />
-          <PodcastSummaryHomepage />
-          <ComingSoon />
+        <div className="w-full max-w-[1200px] mx-auto px-4 flex gap-16">
+          <div className="w-[80%]">
+            <SocialMediaPostSeason />
+            <ShopGallery />
+            <PodcastSummaryHomepage />
+            <ComingSoon />
+          </div>
+          <div className="w-full top-0 sticky h-[500px]">
+            <WebUpdates />
+          </div>
         </div>
       </main>
       <footer className="p-5">
