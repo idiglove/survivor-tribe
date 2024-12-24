@@ -10,8 +10,8 @@ const ubuntu = Ubuntu({
 });
 
 export const metadata: Metadata = {
-  title: "Survivor Tribe - Reality Game Show Fan Site",
-  description: "Get all updates about our favorite reality game show here!",
+  title: "Survivor Tribe - The ultimate Survivor Fan Community",
+  description: "Get Survivor Cast Updates about Survivor Season 47 and more!",
 };
 
 export default function RootLayout({
