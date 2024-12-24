@@ -8,8 +8,11 @@ export async function SocialMediaPostSeason() {
   const images: ImageKitImage[] = await fetchImages();
 
   return (
-    <div id={POST_SEASON_PHOTOS_ELEMENT_ID}>
-      <h2 className="text-3xl font-bold text-left my-8">
+    <div
+      id={POST_SEASON_PHOTOS_ELEMENT_ID}
+      className="flex flex-col items-center px-8"
+    >
+      <h2 className="w-full text-3xl font-bold text-left my-8">
         Post Survivor 47 Cast Photos
       </h2>
       <ImageGallery images={images} />

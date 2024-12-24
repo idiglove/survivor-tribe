@@ -21,6 +21,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
         align: "start",
         loop: true,
       }}
+      style={{ maxWidth: "90%" }}
     >
       <CarouselContent>
         {images.map((image, index: number) => (
@@ -28,7 +29,11 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
             <div className="p-1">
               <Card>
                 <CardContent className="relative flex aspect-[9/16] items-center justify-center p-6">
-                  <Image src={image.url} alt="Post Survivor 47 Cast Photos" fill />
+                  <Image
+                    src={image.url}
+                    alt="Post Survivor 47 Cast Photos"
+                    fill
+                  />
                 </CardContent>
               </Card>
             </div>

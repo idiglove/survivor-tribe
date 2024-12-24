@@ -42,13 +42,16 @@ const ShopGallery = () => {
     },
   ];
   return (
-    <div id={SURVIVOR_MERCH}>
-      <h2 className="text-3xl font-bold text-left my-8">Survivor Merch</h2>
+    <div id={SURVIVOR_MERCH} className="flex flex-col items-center px-8">
+      <h2 className="w-full text-3xl font-bold text-left my-8">
+        Survivor Merch
+      </h2>
       <Carousel
         opts={{
           align: "start",
           loop: true,
         }}
+        style={{ maxWidth: "90%" }}
       >
         <CarouselContent>
           {items.map((item, index: number) => (
