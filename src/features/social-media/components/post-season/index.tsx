@@ -10,7 +10,7 @@ export async function SocialMediaPostSeason() {
   return (
     <div id={POST_SEASON_PHOTOS_ELEMENT_ID}>
       <h2 className="text-3xl font-bold text-left my-8">
-        Post Season 47 Photos
+        Post Survivor 47 Cast Photos
       </h2>
       <ImageGallery images={images} />
     </div>
