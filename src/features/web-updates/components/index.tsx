@@ -6,7 +6,7 @@ const WebUpdates = () => {
       <h2 className="text-xl font-bold text-left my-8">
         Survivor Updates from the Web
       </h2>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 max-w-[150px]">
         <a
           href="https://slate.com/culture/2024/09/survivor-47-cbs-best-seasons-jeff-probst-new-era.html"
           className="relative w-full"
