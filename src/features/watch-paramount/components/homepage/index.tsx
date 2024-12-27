@@ -19,6 +19,12 @@ const WatchParamount = () => {
       title: "Watch Survivor 47 Episode 1 on Paramount+",
     },
     {
+      href: "https://www.amazon.com/Survivor-Season-47/dp/B0DH8BFHKX",
+      imgSrc:
+        "https://upload.wikimedia.org/wikipedia/en/7/76/Survivor_47_logo.webp",
+      title: "Buy Season 47 on Amazon HD $24.99",
+    },
+    {
       href: "https://www.paramountplus.com/ca/shows/video/Cepk0zKh0qrU8qWPYwc1aWzXER5Ri1i2/",
       imgSrc:
         "https://thumbnails.cbsig.net/_x/w400/CBS_Production_Entertainment_VMS/2024/09/13/2371964483714/PPCBS_SURVIVOR_4712_3014567_1920x1080.jpg",
@@ -29,6 +35,12 @@ const WatchParamount = () => {
       imgSrc:
         "https://thumbnails.cbsig.net/_x/w400/CBS_Production_Entertainment_VMS/2024/09/13/2371964995655/PPCBS_SURVIVOR_4714_3033603_1920x1080.jpg",
       title: "Watch Survivor 47 Finale on Paramount+",
+    },
+    {
+      href: "https://www.amazon.com/Survivor-Season-47/dp/B0DH8BFHKX",
+      imgSrc:
+        "https://upload.wikimedia.org/wikipedia/en/7/76/Survivor_47_logo.webp",
+      title: "Buy Season 47 Episode 1 on Amazon HD $2.99",
     },
   ];
   return (
