@@ -59,7 +59,7 @@ const Season47FinaleRhap = () => {
         moves needed to win. Her focus on loyalty, though admirable, was seen as
         a weakness in the eyes of the jury.{" "}
       </p>
-      <ContentHeading>Tiny&apos;s Social Game</ContentHeading>
+      <ContentHeading>Teeny&apos;s Social Game</ContentHeading>
       <p>
         Teeny&apos;s social game was their strength, but their emotional
         connections became their downfall. They were often left out of key

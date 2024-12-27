@@ -2,6 +2,7 @@ import {
   COMING_SOON_ELEMENT_ID,
   POST_SEASON_PHOTOS_ELEMENT_ID,
   SURVIVOR_MERCH,
+  WATCH_PARAMOUNT,
 } from "@/shared/constants";
 import ModalButton from "../modal-button";
 import ScrollButton from "../scroll-button";
@@ -22,6 +23,7 @@ const Navbar = () => {
           </div>
         }
       />
+      <ScrollButton text="Watch Survivor" elementId={WATCH_PARAMOUNT} />
       <ScrollButton
         text="Post Season Photos"
         elementId={POST_SEASON_PHOTOS_ELEMENT_ID}
