@@ -14,17 +14,24 @@ const ShopGallery = () => {
   const items = [
     {
       src: "/merch/operation-italy-unisex-tshirt.png",
-      alt: "Survivor Season 47 Operation Italy Unisex T-shirt",
+      alt: "Survivor 47 Operation Italy Unisex T-shirt",
       text: "Survivor Season 47 Operation Italy Unisex T-shirt",
       price: "$41.00 CAD",
       href: "https://www.paramountshop.com/en-ca/collections/survivor/products/survivor-operation-italy-unisex-comfort-colors-t-shirt",
     },
     {
       src: "/merch/survivor-season-47-buff-headwear.png",
-      alt: "Survivor Season 47 Merge BUFF® Headwear",
+      alt: "Survivor 47 Merge BUFF® Headwear",
       text: "Survivor Season 47 Merge BUFF® Headwear",
       price: "$37.00 CAD - SOLD OUT",
       href: "https://www.paramountshop.com/en-ca/collections/survivor/products/survivor-season-47-merge-buff-headwear",
+    },
+    {
+      src: "/merch/survivor-season-46-logo-mug-103795_1100x.webp",
+      alt: "Survivor 46 Logo Mug",
+      text: "Survivor Season 46 Logo Mug",
+      price: "$25.00 CAD",
+      href: "https://www.paramountshop.com/en-ca/products/survivor-season-46-logo-mug?variant=42105834111023&utm_source=google&utm_medium=organic&utm_campaign=Paramount%20Shop%20Canada%20Market&utm_content=Survivor%20Season%2046%20Logo%20Mug&utm_source=google&utm_medium=paid&utm_campaign=21702106552&utm_content=167300757053&utm_term=&gadid=713368392862&gad_source=1&gclid=Cj0KCQiAvbm7BhC5ARIsAFjwNHveeAe5gY7kjsh9HvF08pco9WOPgs3zn-51HYb7He9nYYYWmmXJNkAaAhrdEALw_wcB",
     },
     {
       src: "/merch/survivor-outwit-outplay-outlast-adult-tshirt.png",
