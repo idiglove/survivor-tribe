@@ -1,17 +1,15 @@
 import * as React from "react";
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-} from "@/shared/components/ui/card";
+import { Card, CardFooter, CardHeader } from "@/shared/components/ui/card";
 import { PODCAST_SUMMARY } from "@/shared/constants";
 import { Button } from "../../ui/button";
 import Link from "next/link";
 
 const PodcastSummaryHomepage = () => {
   return (
-    <div id={PODCAST_SUMMARY}>
-      <h2 className="text-3xl font-bold text-left my-8">5 minute Survivor Podcast Summary</h2>
+    <div id={PODCAST_SUMMARY} className="flex flex-col items-left px-8">
+      <h2 className="text-3xl font-bold text-left my-8">
+        5 minute Survivor Podcast Summary
+      </h2>
       <Card>
         <CardHeader>
           <Link

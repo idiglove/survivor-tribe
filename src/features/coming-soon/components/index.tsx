@@ -9,7 +9,10 @@ import GetUpdateButton from "./get-update-button";
 
 const ComingSoon = () => {
   return (
-    <div id={COMING_SOON_ELEMENT_ID}>
+    <div
+      id={COMING_SOON_ELEMENT_ID}
+      className="flex flex-col items-left px-8"
+    >
       <h2 className="text-3xl font-bold text-left my-8">Coming soon!</h2>
       <div className="flex flex-col gap-6">
         <Card>
