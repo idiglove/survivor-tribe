@@ -1,6 +1,7 @@
 import ComingSoon from "@/features/coming-soon/components";
 import ShopGallery from "@/features/merch/components/shop-gallery";
 import { SocialMediaPostSeason } from "@/features/social-media/components/post-season";
+import WatchParamount from "@/features/watch-paramount/components/homepage";
 import WebUpdates from "@/features/web-updates/components";
 import HomepageHeader from "@/shared/components/homepage/header";
 import PodcastSummaryHomepage from "@/shared/components/homepage/podcast-summary";
@@ -14,6 +15,7 @@ export default function Home() {
         <div className="w-full max-w-[1200px] mx-auto px-4 flex flex-col sm:flex-row gap-15">
           <div className="w-full sm:w-[60%] md:w-[80%]">
             <SocialMediaPostSeason />
+            <WatchParamount />
             <ShopGallery />
             <PodcastSummaryHomepage />
             <ComingSoon />
