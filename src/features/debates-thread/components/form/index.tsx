@@ -6,8 +6,9 @@ import { Form } from "@/shared/components/ui/form";
 import { useToast } from "@/shared/hooks/use-toast";
 import { Button } from "@/shared/components/ui/button";
 import { PostInput } from "@/shared/components/post-input";
+import { createDebate } from "../../api/create-debate";
 
-const FormSchema = z.object({
+export const DebateFormSchema = z.object({
   post: z
     .string()
     .min(10, {
@@ -20,11 +21,11 @@ const FormSchema = z.object({
 
 export function DebateForm() {
   const { toast } = useToast();
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof DebateFormSchema>>({
+    resolver: zodResolver(DebateFormSchema),
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  function onSubmit(data: z.infer<typeof DebateFormSchema>) {
     toast({
       title: "You submitted the following values:",
       description: (
@@ -33,12 +34,14 @@ export function DebateForm() {
         </pre>
       ),
     });
+    createDebate(data);
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
         <PostInput
+          name="post"
           control={form.control as unknown as Control<FieldValues>}
           label="What's your Survivor theory today?"
           placeholder="Make it long and interesting!"

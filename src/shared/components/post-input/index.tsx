@@ -13,13 +13,15 @@ import { Control, FieldValues } from "react-hook-form";
 
 interface PostInputProps {
   control?: Control<FieldValues>;
+  name: string;
   label: string;
-  placeholder: string;
-  description: string;
+  placeholder?: string;
+  description?: string;
 }
 
 export function PostInput({
   control,
+  name,
   label,
   placeholder,
   description,
@@ -27,7 +29,7 @@ export function PostInput({
   return (
     <FormField
       control={control}
-      name="bio"
+      name={name}
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>

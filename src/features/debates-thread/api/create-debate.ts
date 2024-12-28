@@ -1,17 +1,22 @@
+"use server";
+import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { connectToMongoDB } from "@/shared/lib/mongoose";
-import Debate from "@/shared/models/debate";
+import { generateUsername } from "unique-username-generator";
+import { DebateFormSchema } from "../components/form";
 
-export const createDebate = async (formData: FormData) => {
-  await connectToMongoDB();
-  const post = formData.get("post");
-  const user = formData.get("user");
+export const createDebate = async (
+  formData: z.infer<typeof DebateFormSchema>
+) => {
+  const mongo = await connectToMongoDB();
+  const { models } = mongo ?? {};
+  const { post } = formData ?? {};
+  const user = generateUsername("-", 0, 15);
   try {
-    const newDebate = await Debate.create({
+    const newDebate = await models.debates.create({
       post,
       user,
     });
-    newDebate.save();
     revalidatePath("/");
     return newDebate.toString();
   } catch (error) {

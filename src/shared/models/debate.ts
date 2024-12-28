@@ -10,7 +10,7 @@ export interface IDebateDocument extends IDebate, Document {
   updatedAt: Date;
 }
 
-const debateSchema = new mongoose.Schema<IDebateDocument>(
+export const debateSchema = new mongoose.Schema<IDebateDocument>(
   {
     post: {
       type: String,
