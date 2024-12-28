@@ -18,7 +18,6 @@ export default function Home() {
             <SocialMediaPostSeason />
             <WatchParamount />
             <ShopGallery />
-            <DebatesThread />
             <PodcastSummaryHomepage />
             <ComingSoon />
           </div>

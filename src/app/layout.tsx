@@ -3,6 +3,7 @@ import "./globals.css";
 import { Ubuntu } from "next/font/google";
 import PostHogProvider from "@/shared/components/posthog-provider";
 import { Toaster } from "@/shared/components/ui/toaster";
+import { connectToMongoDB } from "@/shared/lib/mongoose";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -20,6 +21,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  connectToMongoDB();
   return (
     <html lang="en">
       <PostHogProvider>
