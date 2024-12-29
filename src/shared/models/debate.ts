@@ -28,6 +28,6 @@ export const debateSchema = new mongoose.Schema<IDebateDocument>(
 );
 
 const Debate: Model<IDebateDocument> =
-  mongoose.models?.Debate || mongoose.model("debates", debateSchema);
+  mongoose.models?.debates || mongoose.model("debates", debateSchema);
 
 export default Debate;
