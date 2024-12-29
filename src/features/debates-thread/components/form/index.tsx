@@ -10,6 +10,7 @@ import { useToast } from "@/shared/hooks/use-toast";
 import { Button } from "@/shared/components/ui/button";
 import { PostInput } from "@/shared/components/post-input";
 import { createDebate } from "../../api/create-debate";
+import { useRouter } from "next/navigation";
 
 export const DebateFormSchema = z.object({
   post: z
@@ -36,6 +37,7 @@ export function DebateForm({ debates }: DebateFormProps) {
   const form = useForm<z.infer<typeof DebateFormSchema>>({
     resolver: zodResolver(DebateFormSchema),
   });
+  const router = useRouter();
 
   async function onSubmit(data: z.infer<typeof DebateFormSchema>) {
     setIsDisabledForm(true);
@@ -43,6 +45,7 @@ export function DebateForm({ debates }: DebateFormProps) {
     toast({
       title: "Your theory is valid here! Thanks for submitting.",
     });
+    router.refresh();
     setIsDisabledForm(false);
   }
 
