@@ -33,6 +33,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
                     src={image.url}
                     alt="Post Survivor 47 Cast Photos"
                     fill
+                    style={{ objectFit: "cover" }}
                   />
                 </CardContent>
               </Card>
