@@ -17,6 +17,7 @@ interface PostInputProps {
   label: string;
   placeholder?: string;
   description?: string;
+  disabled?: boolean;
 }
 
 export function PostInput({
@@ -25,6 +26,7 @@ export function PostInput({
   label,
   placeholder,
   description,
+  disabled,
 }: PostInputProps) {
   return (
     <FormField
@@ -37,6 +39,10 @@ export function PostInput({
             <Textarea
               placeholder={placeholder}
               className="resize-none"
+              disabled={disabled}
+              style={{
+                resize: "vertical",
+              }}
               {...field}
             />
           </FormControl>

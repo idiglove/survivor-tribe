@@ -1,6 +1,7 @@
 "use client";
 import dayjs from "dayjs";
 import Image from "next/image";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Control, FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -30,31 +31,29 @@ interface DebateFormProps {
 }
 
 export function DebateForm({ debates }: DebateFormProps) {
+  const [disabledForm, setIsDisabledForm] = useState(false);
   const { toast } = useToast();
   const form = useForm<z.infer<typeof DebateFormSchema>>({
     resolver: zodResolver(DebateFormSchema),
   });
 
-  function onSubmit(data: z.infer<typeof DebateFormSchema>) {
+  async function onSubmit(data: z.infer<typeof DebateFormSchema>) {
+    setIsDisabledForm(true);
+    await createDebate(data);
     toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+      title: "Your theory is valid here! Thanks for submitting.",
     });
-    createDebate(data);
+    setIsDisabledForm(false);
   }
 
   return (
-    <div className="flex flex-col text-center w-full items-center gap-8">
+    <div className="flex flex-col text-center w-full items-center gap-8 max-w-lg">
       <div className="flex flex-col gap-4">
         {debates?.map((debate, i) => {
           return (
             <div key={i} className="flex flex-col gap-2">
               <p className="text-xl">{debate.post}</p>
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center justify-center">
                 <Image
                   src="/user-placeholder.png"
                   alt="user placeholder"
@@ -74,16 +73,19 @@ export function DebateForm({ debates }: DebateFormProps) {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-2/3 space-y-6"
+          className="w-full space-y-6"
         >
           <PostInput
+            disabled={disabledForm}
             name="post"
             control={form.control as unknown as Control<FieldValues>}
             label="What's your Survivor theory today?"
             placeholder="Make it long and interesting!"
             description="You don't need to login to post. As long you don't clear the cache, you can keep posting with the same username."
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={disabledForm}>
+            Submit
+          </Button>
         </form>
       </Form>
     </div>
