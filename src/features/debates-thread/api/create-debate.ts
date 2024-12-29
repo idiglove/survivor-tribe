@@ -28,7 +28,7 @@ export const createDebate = async (
       post,
       user,
     });
-    revalidatePath("/");
+    revalidatePath("/debates");
     return newDebate.toString();
   } catch (error) {
     console.log(error);
