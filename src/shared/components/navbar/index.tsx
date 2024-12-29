@@ -6,6 +6,8 @@ import {
 } from "@/shared/constants";
 import ModalButton from "../modal-button";
 import ScrollButton from "../scroll-button";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -33,6 +35,9 @@ const Navbar = () => {
         text="Coming Soon Features"
         elementId={COMING_SOON_ELEMENT_ID}
       />
+      <Button>
+        <Link href="/debates">Debates</Link>
+      </Button>
     </div>
   );
 };
