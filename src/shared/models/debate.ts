@@ -18,6 +18,7 @@ export const debateSchema = new mongoose.Schema<IDebateDocument>(
     },
     user: {
       type: String,
+      unique: false,
       required: true,
     },
   },

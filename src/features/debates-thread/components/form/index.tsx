@@ -84,7 +84,7 @@ export function DebateForm({ debates }: DebateFormProps) {
             description="You don't need to login to post. As long you don't clear the cache, you can keep posting with the same username."
           />
           <Button type="submit" disabled={disabledForm}>
-            Submit
+            Submit any theory
           </Button>
         </form>
       </Form>

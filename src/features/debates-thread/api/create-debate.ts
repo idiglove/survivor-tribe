@@ -5,13 +5,24 @@ import { generateUsername } from "unique-username-generator";
 import Debate from "@/shared/models/debate";
 import { connectToMongoDB } from "@/shared/lib/mongoose";
 import { DebateFormSchema } from "../components/form";
+import { cookies } from "next/headers";
 
 export const createDebate = async (
   formData: z.infer<typeof DebateFormSchema>
 ) => {
   await connectToMongoDB();
   const { post } = formData ?? {};
-  const user = generateUsername("-", 0, 15);
+  let user;
+  const cookieStore = cookies();
+  const userFromStorage = cookieStore.get("user");
+
+  if (userFromStorage) {
+    user = userFromStorage.value;
+  } else {
+    user = generateUsername("-", 0, 15);
+    cookieStore.set("user", user);
+  }
+
   try {
     const newDebate = await Debate.create({
       post,
