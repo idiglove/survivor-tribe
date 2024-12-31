@@ -1,6 +1,9 @@
 export const newEraPlayers = [
   {
     player: "Dee Valladares",
+    imgSrc: "/quiz/Dee_Valladares.webp",
+    summary:
+      "You match with Dee Valladares! Like her, you excel at building alliances and strategizing, charming others while skillfully managing threats. Your social finesse sets you apart in the game!",
     questions: [
       {
         question: "How would you describe your gameplay style?",
@@ -111,6 +114,9 @@ export const newEraPlayers = [
   },
   {
     player: "Erika Casupanan",
+    imgSrc: "/quiz/Erika_Casupanan.webp",
+    summary:
+      "You match with Erika Casupanan! With a low-key approach that masked her brilliance, Erika maneuvered through the game with finesse. She flipped alliances like a pro, always staying one step ahead of her competition. Her strategic thinking and social savvy allowed her to outwit rivals while maintaining an unassuming presence. When it came time for the Final Tribal Council, Erika's articulate gameplay and sharp insights left the jury in awe, securing her place as Sole Survivor!",
     questions: [
       {
         question: "How would you describe your gameplay style?",
@@ -221,6 +227,9 @@ export const newEraPlayers = [
   },
   {
     player: "Kenzie Petty",
+    imgSrc: "/quiz/Kenzie_Petty.webp",
+    summary:
+      "You're like Kenzie Petty! Early on, she was marked as a threat, but Kenzie thrived under pressure, weaving through alliances with grace. Her charm and charisma won over allies and enemies alike as she navigated the treacherous waters of tribal politics. In the endgame, Kenzie's humble yet powerful plea at the Final Tribal Council showcased her growth and social game mastery, earning her the coveted title of Sole Survivor!",
     questions: [
       {
         question: "How would you describe your gameplay style?",
@@ -331,6 +340,9 @@ export const newEraPlayers = [
   },
   {
     player: "Maryanne Oketch",
+    summary:
+      "You're like Maryanne! Like her, you bring a vibrant energy to the game, blending emotional intelligence with strategic flair. Your ability to adapt and connect with others mirrors Maryanne's journey as she navigated alliances with charm and wit. Just as she turned challenges into opportunities, you thrive in dynamic situations, using your social skills to level down your threat level.",
+    imgSrc: "/quiz/Maryanne_Oketch.webp",
     questions: [
       {
         question: "How would you describe your gameplay style?",
@@ -441,6 +453,9 @@ export const newEraPlayers = [
   },
   {
     player: "Mike Gabler",
+    summary:
+      "You match with Mike Gabler! Like him, you thrive in the shadows, expertly juggling alliances while keeping your true strategy under wraps. Your ability to connect with others and play a low-key game mirrors Mike's journey as he navigated the complexities of Survivor 43. Just as he turned the tables on rivals without ever receiving a vote against him, you possess the skill to outsmart your competition while staying below the radar.",
+    imgSrc: "/quiz/Mike_Gabler.webp",
     questions: [
       {
         question: "How would you describe your gameplay style?",
@@ -551,6 +566,9 @@ export const newEraPlayers = [
   },
   {
     player: "Rachel LaMont",
+    summary:
+      "You match with Rachel LaMont! From her impressive puzzle-solving skills to her strategic gameplay, Rachel was a force to be reckoned with. After facing blindsides and navigating tricky alliances, she emerged stronger than ever. With a mix of luck and skill, Rachel capitalized on every opportunity that came her way. By the time she reached the Final Tribal Council, her impressive résumé spoke volumes, leading to a well-deserved victory as Sole Survivor!",
+    imgSrc: "/quiz/Rachel_LaMont.webp",
     questions: [
       {
         question: "How would you describe your gameplay style?",
@@ -661,6 +679,9 @@ export const newEraPlayers = [
   },
   {
     player: 'Yamil "Yam Yam" Arocho',
+    summary:
+      "You match with Yam Yam! With his infectious energy and sharp wit, Yam Yam built connections that propelled him through the game. He balanced charm with cunning, expertly navigating alliances while keeping threats at bay. His ability to adapt to any situation made him a beloved player. At the Final Tribal Council, Yam Yam's heartfelt storytelling captivated the jury, ultimately earning him the title of Sole Survivor!",
+    imgSrc: "/quiz/Yam_Yam_Arocho.webp",
     questions: [
       {
         question: "How would you describe your gameplay style?",

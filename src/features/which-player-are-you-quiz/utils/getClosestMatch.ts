@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { newEraPlayers } from "@/assets/quiz-assets/new-era-players";
-import { FormSchema } from "..";
+import { FormSchema, OptionsType } from "..";
 
 const getClosestMatch = ({ data }: { data: z.infer<typeof FormSchema> }) => {
   const playerPoints = newEraPlayers.map((question, _) => {
@@ -14,6 +14,14 @@ const getClosestMatch = ({ data }: { data: z.infer<typeof FormSchema> }) => {
         questionData[questionIndex].options[optionIndex]
       ) {
         const points = questionData[questionIndex].options[optionIndex].points;
+        if (points === 5) {
+          return sum + (points * 2);
+        }
+
+        if (points === 4) {
+          return sum + (points * 1.5);
+        }
+
         return sum + points;
       }
 
@@ -33,7 +41,7 @@ const getClosestMatch = ({ data }: { data: z.infer<typeof FormSchema> }) => {
     []
   );
 
-  return indices;
+  return indices.map((index) => newEraPlayers[index]);
 };
 
 export default getClosestMatch;

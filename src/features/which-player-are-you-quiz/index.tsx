@@ -24,12 +24,14 @@ import {
   FormLabel,
 } from "@/shared/components/ui/form";
 import getClosestMatch from "./utils/getClosestMatch";
+import { useState } from "react";
+import Image from "next/image";
 
 const questionsIndexes = newEraPlayers[0].questions.map(
   (_, index) => `question-${index}`
 );
 
-type OptionsType = {
+export type OptionsType = {
   [key: string]: { text: string; points: number };
 };
 
@@ -52,6 +54,7 @@ export const FormSchema = z.object({
 });
 
 const WhichPlayerAreYouQuiz = () => {
+  const [players, setPlayers] = useState<Record<string, any>[]>(null);
   const { toast } = useToast();
   const questions: Record<string, any>[] = newEraPlayers[0].questions;
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -59,11 +62,13 @@ const WhichPlayerAreYouQuiz = () => {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    const playerIndices = getClosestMatch({ data });
-    toast({
-      title: "Here's your points",
-      description: <span>{JSON.stringify(playerIndices)}</span>,
-    });
+    const playersMatched = getClosestMatch({ data });
+    setPlayers(playersMatched);
+    console.log({ playersMatched, data });
+    // toast({
+    //   title: "Here's your points",
+    //   description: <span>{JSON.stringify(players)}</span>,
+    // });
   }
 
   return (
@@ -84,58 +89,84 @@ const WhichPlayerAreYouQuiz = () => {
               winner from seasons 41-47 matches your style!
             </DialogDescription>
           </DialogHeader>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              {questions.map((question, index) => {
-                const options: OptionsType = question.options;
-
+          {players ? (
+            <>
+              {players.map((player, index) => {
                 return (
-                  <FormField
-                    key={index}
-                    control={form.control}
-                    name={`question-${index}`}
-                    render={({ field }) => (
-                      <FormItem className="w-full">
-                        <FormLabel>{question.question}</FormLabel>
-                        <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                            className="flex flex-col space-y-1"
-                          >
-                            {Object.keys(options).map((option, optionIndex) => {
-                              const radioKey = `${index}-${option}`;
-                              return (
-                                <FormItem
-                                  key={radioKey}
-                                  className="flex items-center space-x-3 space-y-0"
-                                >
-                                  <FormControl>
-                                    <RadioGroupItem value={radioKey} />
-                                  </FormControl>
-                                  <FormLabel className="font-normal">
-                                    {options[option].text}
-                                  </FormLabel>
-                                </FormItem>
-                              );
-                            })}
-                          </RadioGroup>
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
+                  <div key={index} className="flex justify-center items-center">
+                    <div className="flex flex-col items-center text-center gap-2">
+                      <h3 className="font-bold text-md">{player.player}</h3>
+                      <Image
+                        src={player.imgSrc}
+                        alt={player.player}
+                        width={100}
+                        height={100}
+                      />
+                      <p className="font-semibold text-sm">{player.summary}</p>
+                    </div>
+                  </div>
                 );
               })}
-              <DialogFooter className="flex flex-col sm:flex-col gap-2 items-center">
-                <Button type="submit" className="w-full">
-                  Get the answer
-                </Button>
-                <span className="text-xs">
-                  Survivor Quiz v1.0 - Survivor Tribe
-                </span>
-              </DialogFooter>
-            </form>
-          </Form>
+            </>
+          ) : (
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
+                {questions.map((question, index) => {
+                  const options: OptionsType = question.options;
+
+                  return (
+                    <FormField
+                      key={index}
+                      control={form.control}
+                      name={`question-${index}`}
+                      render={({ field }) => (
+                        <FormItem className="w-full">
+                          <FormLabel>{question.question}</FormLabel>
+                          <FormControl>
+                            <RadioGroup
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                              className="flex flex-col space-y-1"
+                            >
+                              {Object.keys(options).map(
+                                (option, optionIndex) => {
+                                  const radioKey = `${index}-${option}`;
+                                  return (
+                                    <FormItem
+                                      key={radioKey}
+                                      className="flex items-center space-x-3 space-y-0"
+                                    >
+                                      <FormControl>
+                                        <RadioGroupItem value={radioKey} />
+                                      </FormControl>
+                                      <FormLabel className="font-normal">
+                                        {options[option].text}
+                                      </FormLabel>
+                                    </FormItem>
+                                  );
+                                }
+                              )}
+                            </RadioGroup>
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  );
+                })}
+                <DialogFooter className="flex flex-col sm:flex-col gap-2 items-center">
+                  <Button type="submit" className="w-full">
+                    Get the answer
+                  </Button>
+                  <span className="text-xs">
+                    Survivor Quiz v1.0 - Survivor Tribe
+                  </span>
+                </DialogFooter>
+              </form>
+            </Form>
+          )}
         </DialogContent>
       </Dialog>
     </>
