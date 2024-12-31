@@ -1,3 +1,6 @@
+"use client";
+
+import { z } from "zod";
 import { Button } from "@/shared/components/ui/button";
 import {
   Dialog,
@@ -10,10 +13,47 @@ import {
 } from "@/shared/components/ui/dialog";
 import { newEraPlayers } from "@/assets/quiz-assets/new-era-players";
 import { RadioGroup, RadioGroupItem } from "@/shared/components/ui/radio-group";
-import { Label } from "@/shared/components/ui/label";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useToast } from "@/shared/hooks/use-toast";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/shared/components/ui/form";
+
+const questionsIndexes = newEraPlayers[0].questions.map(
+  (_, index) => `question-${index}`
+);
+
+const FormSchema = z.object({
+  [questionsIndexes[0]]: z.string().min(1, { message: "Please select an option" }),
+  [questionsIndexes[1]]: z.string().min(1, { message: "Please select an option" }),
+  [questionsIndexes[2]]: z.string().min(1, { message: "Please select an option" }),
+  [questionsIndexes[3]]: z.string().min(1, { message: "Please select an option" }),
+  [questionsIndexes[4]]: z.string().min(1, { message: "Please select an option" }),
+});
 
 const WhichPlayerAreYouQuiz = () => {
+  const { toast } = useToast();
   const questions = newEraPlayers[0].questions;
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+  });
+
+  function onSubmit(data: z.infer<typeof FormSchema>) {
+    toast({
+      title: "You submitted the following values:",
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      ),
+    });
+  }
+
   return (
     <>
       <h2>
@@ -32,36 +72,60 @@ const WhichPlayerAreYouQuiz = () => {
               winner from seasons 41-47 matches your style!
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4 py-4">
-            {questions.map((question, index) => {
-              const options: {
-                [key: string]: { text: string; points: number };
-              } = question.options;
-              return (
-                <div key={index} className="flex flex-col gap-2">
-                  <h3>{question.question}</h3>
-                  <RadioGroup defaultValue="option-one">
-                    {Object.keys(options).map((option, optionIndex) => {
-                      const radioKey = `${index}-${option}`;
-                      return (
-                        <div
-                          key={optionIndex}
-                          className="flex items-center space-x-2"
-                        >
-                          <RadioGroupItem value={radioKey} id={radioKey} />
-                          <Label htmlFor={radioKey}>{options[option].text}</Label>
-                        </div>
-                      );
-                    })}
-                  </RadioGroup>
-                </div>
-              );
-            })}
-          </div>
-          <DialogFooter className="flex flex-col sm:flex-col gap-2">
-            <Button type="submit">Next</Button>
-            <span className="text-xs">Survivor Tribe Quiz v1.0</span>
-          </DialogFooter>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              {questions.map((question, index) => {
+                const options: {
+                  [key: string]: { text: string; points: number };
+                } = question.options;
+
+                return (
+                  <FormField
+                    key={index}
+                    control={form.control}
+                    name={`question-${index}`}
+                    render={({ field }) => (
+                      <FormItem className="w-full">
+                        <FormLabel>{question.question}</FormLabel>
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="flex flex-col space-y-1"
+                          >
+                            {Object.keys(options).map((option, optionIndex) => {
+                              const radioKey = `${index}-${option}`;
+                              return (
+                                <FormItem
+                                  key={radioKey}
+                                  className="flex items-center space-x-3 space-y-0"
+                                >
+                                  <FormControl>
+                                    <RadioGroupItem value={radioKey} />
+                                  </FormControl>
+                                  <FormLabel className="font-normal">
+                                    {options[option].text}
+                                  </FormLabel>
+                                </FormItem>
+                              );
+                            })}
+                          </RadioGroup>
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                );
+              })}
+              <DialogFooter className="flex flex-col sm:flex-col gap-2 items-center">
+                <Button type="submit" className="w-full">
+                  Get the answer
+                </Button>
+                <span className="text-xs">
+                  Survivor Quiz v1.0 - Survivor Tribe
+                </span>
+              </DialogFooter>
+            </form>
+          </Form>
         </DialogContent>
       </Dialog>
     </>
