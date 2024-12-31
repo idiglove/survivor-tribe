@@ -1,0 +1,110 @@
+{
+  "player": "Yamil \"Yam Yam\" Arocho",
+  "questions": [
+    {
+      "question": "How would you describe your gameplay style?",
+      "options": {
+        "a": {
+          "text": "Low-key and under the radar",
+          "points": 2
+        },
+        "b": {
+          "text": "Dominant and in control",
+          "points": 4
+        },
+        "c": {
+          "text": "Adaptable and opportunistic",
+          "points": 5
+        },
+        "d": {
+          "text": "Social and relationship-focused",
+          "points": 5
+        }
+      }
+    },
+    {
+      "question": "What's your strongest asset in the game?",
+      "options": {
+        "a": {
+          "text": "Challenge performance",
+          "points": 2
+        },
+        "b": {
+          "text": "Strategic thinking",
+          "points": 4
+        },
+        "c": {
+          "text": "Social connections",
+          "points": 5
+        },
+        "d": {
+          "text": "Emotional intelligence",
+          "points": 4
+        }
+      }
+    },
+    {
+      "question": "How do you handle alliances?",
+      "options": {
+        "a": {
+          "text": "Loyal to one strong alliance",
+          "points": 5
+        },
+        "b": {
+          "text": "Flip between alliances as needed",
+          "points": 2
+        },
+        "c": {
+          "text": "Form multiple smaller alliances",
+          "points": 3
+        },
+        "d": {
+          "text": "Work mostly independently",
+          "points": 1
+        }
+      }
+    },
+    {
+      "question": "How would others perceive your personality?",
+      "options": {
+        "a": {
+          "text": "Humble and charismatic",
+          "points": 5
+        },
+        "b": {
+          "text": "Exuberant and larger-than-life",
+          "points": 4
+        },
+        "c": {
+          "text": "Low-key and unassuming",
+          "points": 1
+        },
+        "d": {
+          "text": "Strategic and calculating",
+          "points": 3
+        }
+      }
+    },
+    {
+      "question": "What's your approach to threats in the game?",
+      "options": {
+        "a": {
+          "text": "Target them early",
+          "points": 2
+        },
+        "b": {
+          "text": "Align with them temporarily",
+          "points": 4
+        },
+        "c": {
+          "text": "Downplay my own threat level",
+          "points": 3
+        },
+        "d": {
+          "text": "Use them as shields",
+          "points": 5
+        }
+      }
+    }
+  ]
+}

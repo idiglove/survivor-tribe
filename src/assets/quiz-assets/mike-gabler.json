@@ -1,0 +1,110 @@
+{
+  "player": "Mike Gabler",
+  "questions": [
+    {
+      "question": "How would you describe your gameplay style?",
+      "options": {
+        "a": {
+          "text": "Low-key and under the radar",
+          "points": 5
+        },
+        "b": {
+          "text": "Dominant and in control",
+          "points": 1
+        },
+        "c": {
+          "text": "Adaptable and opportunistic",
+          "points": 3
+        },
+        "d": {
+          "text": "Social and relationship-focused",
+          "points": 4
+        }
+      }
+    },
+    {
+      "question": "What's your strongest asset in the game?",
+      "options": {
+        "a": {
+          "text": "Challenge performance",
+          "points": 2
+        },
+        "b": {
+          "text": "Strategic thinking",
+          "points": 3
+        },
+        "c": {
+          "text": "Social connections",
+          "points": 5
+        },
+        "d": {
+          "text": "Emotional intelligence",
+          "points": 4
+        }
+      }
+    },
+    {
+      "question": "How do you handle alliances?",
+      "options": {
+        "a": {
+          "text": "Loyal to one strong alliance",
+          "points": 2
+        },
+        "b": {
+          "text": "Flip between alliances as needed",
+          "points": 5
+        },
+        "c": {
+          "text": "Form multiple smaller alliances",
+          "points": 4
+        },
+        "d": {
+          "text": "Work mostly independently",
+          "points": 1
+        }
+      }
+    },
+    {
+      "question": "How would others perceive your personality?",
+      "options": {
+        "a": {
+          "text": "Humble and charismatic",
+          "points": 4
+        },
+        "b": {
+          "text": "Exuberant and larger-than-life",
+          "points": 1
+        },
+        "c": {
+          "text": "Low-key and unassuming",
+          "points": 5
+        },
+        "d": {
+          "text": "Strategic and calculating",
+          "points": 3
+        }
+      }
+    },
+    {
+      "question": "What's your approach to threats in the game?",
+      "options": {
+        "a": {
+          "text": "Target them early",
+          "points": 3
+        },
+        "b": {
+          "text": "Align with them temporarily",
+          "points": 2
+        },
+        "c": {
+          "text": "Downplay my own threat level",
+          "points": 5
+        },
+        "d": {
+          "text": "Use them as shields",
+          "points": 1
+        }
+      }
+    }
+  ]
+}
