@@ -23,6 +23,7 @@ import {
   FormItem,
   FormLabel,
 } from "@/shared/components/ui/form";
+import getClosestMatch from "./utils/getClosestMatch";
 
 const questionsIndexes = newEraPlayers[0].questions.map(
   (_, index) => `question-${index}`
@@ -32,7 +33,7 @@ type OptionsType = {
   [key: string]: { text: string; points: number };
 };
 
-const FormSchema = z.object({
+export const FormSchema = z.object({
   [questionsIndexes[0]]: z
     .string()
     .min(1, { message: "Please select an option" }),
@@ -58,42 +59,10 @@ const WhichPlayerAreYouQuiz = () => {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    const playerPoints = newEraPlayers.map((question, index) => {
-      const totalPoints = Object.entries(data).reduce((sum, [key, value]) => {
-        const questionIndex = parseInt(key.split("-")[1]);
-        const optionIndex = value.split("-")[1];
-        const questionData: { options: OptionsType }[] = question.questions;
-
-        if (
-          questionData[questionIndex] &&
-          questionData[questionIndex].options[optionIndex]
-        ) {
-          const points =
-            questionData[questionIndex].options[optionIndex].points;
-          return sum + points;
-        }
-
-        return sum;
-      }, 0);
-      return totalPoints;
-    });
-
-    const maxValue = Math.max(...playerPoints);
-    const indices = playerPoints.reduce(
-      (accumulator: number[], currentValue, currentIndex) => {
-        if (currentValue === maxValue) {
-          accumulator.push(currentIndex);
-        }
-        return accumulator;
-      },
-      []
-    );
-
-    console.log({ playerPoints, data, maxValue, indices });
-
+    const playerIndices = getClosestMatch({ data });
     toast({
       title: "Here's your points",
-      description: <span>{JSON.stringify(playerPoints)}</span>,
+      description: <span>{JSON.stringify(playerIndices)}</span>,
     });
   }
 
