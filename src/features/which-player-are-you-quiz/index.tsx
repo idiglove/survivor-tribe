@@ -28,29 +28,72 @@ const questionsIndexes = newEraPlayers[0].questions.map(
   (_, index) => `question-${index}`
 );
 
+type OptionsType = {
+  [key: string]: { text: string; points: number };
+};
+
 const FormSchema = z.object({
-  [questionsIndexes[0]]: z.string().min(1, { message: "Please select an option" }),
-  [questionsIndexes[1]]: z.string().min(1, { message: "Please select an option" }),
-  [questionsIndexes[2]]: z.string().min(1, { message: "Please select an option" }),
-  [questionsIndexes[3]]: z.string().min(1, { message: "Please select an option" }),
-  [questionsIndexes[4]]: z.string().min(1, { message: "Please select an option" }),
+  [questionsIndexes[0]]: z
+    .string()
+    .min(1, { message: "Please select an option" }),
+  [questionsIndexes[1]]: z
+    .string()
+    .min(1, { message: "Please select an option" }),
+  [questionsIndexes[2]]: z
+    .string()
+    .min(1, { message: "Please select an option" }),
+  [questionsIndexes[3]]: z
+    .string()
+    .min(1, { message: "Please select an option" }),
+  [questionsIndexes[4]]: z
+    .string()
+    .min(1, { message: "Please select an option" }),
 });
 
 const WhichPlayerAreYouQuiz = () => {
   const { toast } = useToast();
-  const questions = newEraPlayers[0].questions;
+  const questions: Record<string, any>[] = newEraPlayers[0].questions;
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    const playerPoints = newEraPlayers.map((question, index) => {
+      const totalPoints = Object.entries(data).reduce((sum, [key, value]) => {
+        const questionIndex = parseInt(key.split("-")[1]);
+        const optionIndex = value.split("-")[1];
+        const questionData: { options: OptionsType }[] = question.questions;
+
+        if (
+          questionData[questionIndex] &&
+          questionData[questionIndex].options[optionIndex]
+        ) {
+          const points =
+            questionData[questionIndex].options[optionIndex].points;
+          return sum + points;
+        }
+
+        return sum;
+      }, 0);
+      return totalPoints;
+    });
+
+    const maxValue = Math.max(...playerPoints);
+    const indices = playerPoints.reduce(
+      (accumulator: number[], currentValue, currentIndex) => {
+        if (currentValue === maxValue) {
+          accumulator.push(currentIndex);
+        }
+        return accumulator;
+      },
+      []
+    );
+
+    console.log({ playerPoints, data, maxValue, indices });
+
     toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+      title: "Here's your points",
+      description: <span>{JSON.stringify(playerPoints)}</span>,
     });
   }
 
@@ -75,9 +118,7 @@ const WhichPlayerAreYouQuiz = () => {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               {questions.map((question, index) => {
-                const options: {
-                  [key: string]: { text: string; points: number };
-                } = question.options;
+                const options: OptionsType = question.options;
 
                 return (
                   <FormField
