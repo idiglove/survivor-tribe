@@ -9,8 +9,8 @@ const getMatchedPlayerImage = async ({
   summary,
   imgSrc,
 }: GetMatchedPlayerImageProps) => {
-  const getImage = new Promise<HTMLImageElement>((resolve, revoke) => {
-    let img = document.createElement("img");
+  const getImage = new Promise<HTMLImageElement>((resolve) => {
+    const img = document.createElement("img");
 
     img.onload = () => {
       resolve(img);
@@ -20,8 +20,8 @@ const getMatchedPlayerImage = async ({
     img.src = imgSrc;
   });
 
-  const getLogo = new Promise<HTMLImageElement>((resolve, revoke) => {
-    let img = document.createElement("img");
+  const getLogo = new Promise<HTMLImageElement>((resolve) => {
+    const img = document.createElement("img");
 
     img.onload = () => {
       resolve(img);
@@ -32,7 +32,7 @@ const getMatchedPlayerImage = async ({
   });
 
   const getCanvasImage = async () => {
-    let canvas = document.createElement("canvas");
+    const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
     canvas.width = 1280;

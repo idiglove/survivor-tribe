@@ -15,7 +15,6 @@ import { newEraPlayers } from "@/assets/quiz-assets/new-era-players";
 import { RadioGroup, RadioGroupItem } from "@/shared/components/ui/radio-group";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useToast } from "@/shared/hooks/use-toast";
 import {
   Form,
   FormControl,
@@ -57,7 +56,6 @@ const WhichPlayerAreYouQuiz = () => {
   const [players, setPlayers] = useState<Record<string, any>[] | undefined>();
   const [canvasImage, setCanvasImage] = useState<string | undefined>();
   const [canvas, setCanvas] = useState<HTMLCanvasElement | undefined>();
-  const { toast } = useToast();
   const questions: Record<string, any>[] = newEraPlayers[0].questions;
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -80,8 +78,8 @@ const WhichPlayerAreYouQuiz = () => {
   const downloadImage = () => {
     if (canvas) {
       canvas.toBlob((blob) => {
-        let data = window.URL.createObjectURL(blob!);
-        let link = document.createElement("a");
+        const data = window.URL.createObjectURL(blob!);
+        const link = document.createElement("a");
         link.href = data;
         link.download = "survivor-tribe-match-player.jpg";
         link.click();
@@ -155,24 +153,22 @@ const WhichPlayerAreYouQuiz = () => {
                               defaultValue={field.value}
                               className="flex flex-col space-y-1"
                             >
-                              {Object.keys(options).map(
-                                (option, optionIndex) => {
-                                  const radioKey = `${index}-${option}`;
-                                  return (
-                                    <FormItem
-                                      key={radioKey}
-                                      className="flex items-center space-x-3 space-y-0"
-                                    >
-                                      <FormControl>
-                                        <RadioGroupItem value={radioKey} />
-                                      </FormControl>
-                                      <FormLabel className="font-normal">
-                                        {options[option].text}
-                                      </FormLabel>
-                                    </FormItem>
-                                  );
-                                }
-                              )}
+                              {Object.keys(options).map((option) => {
+                                const radioKey = `${index}-${option}`;
+                                return (
+                                  <FormItem
+                                    key={radioKey}
+                                    className="flex items-center space-x-3 space-y-0"
+                                  >
+                                    <FormControl>
+                                      <RadioGroupItem value={radioKey} />
+                                    </FormControl>
+                                    <FormLabel className="font-normal">
+                                      {options[option].text}
+                                    </FormLabel>
+                                  </FormItem>
+                                );
+                              })}
                             </RadioGroup>
                           </FormControl>
                         </FormItem>
