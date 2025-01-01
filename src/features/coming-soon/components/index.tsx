@@ -39,20 +39,6 @@ const ComingSoon = () => {
             <GetUpdateButton />
           </CardFooter>
         </Card>
-        <Card>
-          <CardHeader>
-            <h3 className="font-semibold">
-              Quiz: What kind of Survivor Player are you?
-            </h3>
-          </CardHeader>
-          <CardContent>
-            Choose from 3 players and get to dissect the kind of game that you
-            would play!
-          </CardContent>
-          <CardFooter>
-            <GetUpdateButton />
-          </CardFooter>
-        </Card>
       </div>
     </div>
   );

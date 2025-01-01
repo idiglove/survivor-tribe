@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="w-full max-w-[200px] md:max-w-[900px] mx-auto my-4 flex flex-col md:flex-row gap-4 justify-center">
+    <div className="w-full max-w-[200px] md:max-w-[900px] mx-auto my-4 flex flex-col md:flex-row md:flex-wrap gap-4 justify-center">
       <ModalButton
         text="Who we are"
         dialogTitle="About the site creator"

@@ -4,8 +4,6 @@ import { Ubuntu } from "next/font/google";
 import PostHogProvider from "@/shared/components/posthog-provider";
 import { Toaster } from "@/shared/components/ui/toaster";
 import { connectToMongoDB } from "@/shared/lib/mongoose";
-import { Button } from "@/shared/components/ui/button";
-import Link from "next/link";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],

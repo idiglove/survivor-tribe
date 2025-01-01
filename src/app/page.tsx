@@ -3,7 +3,6 @@ import ShopGallery from "@/features/merch/components/shop-gallery";
 import { SocialMediaPostSeason } from "@/features/social-media/components/post-season";
 import WatchParamount from "@/features/watch-paramount/components/homepage";
 import WebUpdates from "@/features/web-updates/components";
-import WhichPlayerAreYouQuiz from "@/features/which-player-are-you-quiz";
 import HomepageHeader from "@/shared/components/homepage/header";
 import PodcastSummaryHomepage from "@/shared/components/homepage/podcast-summary";
 

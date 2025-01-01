@@ -9,7 +9,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/shared/components/ui/dialog";
 import { newEraPlayers } from "@/assets/quiz-assets/new-era-players";
 import { RadioGroup, RadioGroupItem } from "@/shared/components/ui/radio-group";
@@ -103,8 +102,8 @@ const WhichPlayerAreYouQuiz = () => {
               <>
                 <DialogTitle>Here are the results!</DialogTitle>
                 <DialogDescription>
-                  I'll be more than happy if you share it to anyone or to any of
-                  your socials!
+                  I&apos;ll be more than happy if you share it to anyone or to
+                  any of your socials!
                 </DialogDescription>
               </>
             ) : (
