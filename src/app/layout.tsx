@@ -18,15 +18,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  quiz,
 }: Readonly<{
   children: React.ReactNode;
+  quiz: React.ReactNode;
 }>) {
   connectToMongoDB();
+
   return (
     <html lang="en">
       <PostHogProvider>
         <body className={`antialiased ${ubuntu.className}`}>
           <>
+            {quiz}
             {children}
             <Toaster />
           </>
