@@ -26,6 +26,7 @@ import getClosestMatch from "./utils/getClosestMatch";
 import { useState } from "react";
 import getMatchedPlayerImage from "./utils/getMatchedPlayerImage";
 import { useRouter } from "next/navigation";
+import GetUpdateButton from "../coming-soon/components/get-update-button";
 
 const questionsIndexes = newEraPlayers[0].questions.map(
   (_, index) => `question-${index}`
@@ -66,16 +67,20 @@ const WhichPlayerAreYouQuiz = () => {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const playersMatched = getClosestMatch({ data });
     setPlayers(playersMatched);
-
-    const imgSrc = await getMatchedPlayerImage({
-      title: playersMatched[0].player,
-      summary: playersMatched[0].summary,
-      imgSrc: playersMatched[0].imgSrc,
-    });
-
-    setCanvasImage(imgSrc?.imgSrc);
-    setCanvas(imgSrc?.canvas);
   }
+
+  const showResults = async () => {
+    if (players) {
+      const imgSrc = await getMatchedPlayerImage({
+        title: players[0].player,
+        summary: players[0].summary,
+        imgSrc: players[0].imgSrc,
+      });
+
+      setCanvasImage(imgSrc?.imgSrc);
+      setCanvas(imgSrc?.canvas);
+    }
+  };
 
   const downloadImage = () => {
     if (canvas) {
@@ -120,26 +125,14 @@ const WhichPlayerAreYouQuiz = () => {
               <img src={canvasImage} />
             </div>
           ) : null}
-          {players ? (
-            <>
-              {/* {players.map((player, index) => {
-                return (
-                  <div key={index} className="flex justify-center items-center">
-                    <div className="flex flex-col items-center text-center gap-2">
-                      <h3 className="font-bold text-md">{player.player}</h3>
-                      <Image
-                        src={player.imgSrc}
-                        alt={player.player}
-                        width={100}
-                        height={100}
-                      />
-                      <p className="font-semibold text-sm">{player.summary}</p>
-                    </div>
-                  </div>
-                );
-              })} */}
-            </>
-          ) : (
+          {players && !canvasImage ? (
+            <GetUpdateButton
+              text="Subscribe first to get more updates"
+              onSubscribe={showResults}
+            />
+          ) : null}
+
+          {!players && !canvasImage ? (
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -195,7 +188,7 @@ const WhichPlayerAreYouQuiz = () => {
                 </DialogFooter>
               </form>
             </Form>
-          )}
+          ) : null}
         </DialogContent>
       </Dialog>
     </>
