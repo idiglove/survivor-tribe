@@ -25,6 +25,7 @@ import {
 import getClosestMatch from "./utils/getClosestMatch";
 import { useState } from "react";
 import getMatchedPlayerImage from "./utils/getMatchedPlayerImage";
+import { useRouter } from "next/navigation";
 
 const questionsIndexes = newEraPlayers[0].questions.map(
   (_, index) => `question-${index}`
@@ -60,6 +61,7 @@ const WhichPlayerAreYouQuiz = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
+  const router = useRouter();
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const playersMatched = getClosestMatch({ data });
@@ -89,21 +91,28 @@ const WhichPlayerAreYouQuiz = () => {
 
   return (
     <>
-      <h2>
-        Survior Quiz - Answer to know which player is most like you from the New
-        Era of Survivor
-      </h2>
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button>Which Survivor Player is like you?</Button>
-        </DialogTrigger>
+      <Dialog defaultOpen onOpenChange={() => router.back()}>
         <DialogContent className="sm:max-w-[425px] overflow-scroll max-h-[calc(100vh-6rem)]">
           <DialogHeader>
-            <DialogTitle>Which New Era Survivor Winner Are You?</DialogTitle>
-            <DialogDescription>
-              Take this ultimate Survivor personality quiz to find out which
-              winner from seasons 41-47 matches your style!
-            </DialogDescription>
+            {canvasImage ? (
+              <>
+                <DialogTitle>Here are the results!</DialogTitle>
+                <DialogDescription>
+                  I'll be more than happy if you share it to anyone or to any of
+                  your socials!
+                </DialogDescription>
+              </>
+            ) : (
+              <>
+                <DialogTitle>
+                  Which New Era Survivor Winner Are You?
+                </DialogTitle>
+                <DialogDescription>
+                  Take this ultimate Survivor personality quiz to find out which
+                  winner from seasons 41-47 matches your style!
+                </DialogDescription>
+              </>
+            )}
           </DialogHeader>
           {canvasImage ? (
             <div className="flex flex-col gap-2">

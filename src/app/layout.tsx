@@ -4,6 +4,8 @@ import { Ubuntu } from "next/font/google";
 import PostHogProvider from "@/shared/components/posthog-provider";
 import { Toaster } from "@/shared/components/ui/toaster";
 import { connectToMongoDB } from "@/shared/lib/mongoose";
+import { Button } from "@/shared/components/ui/button";
+import Link from "next/link";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -18,15 +20,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  quiz,
 }: Readonly<{
   children: React.ReactNode;
+  quiz: React.ReactNode;
 }>) {
   connectToMongoDB();
+
   return (
     <html lang="en">
       <PostHogProvider>
         <body className={`antialiased ${ubuntu.className}`}>
           <>
+            {quiz}
             {children}
             <Toaster />
           </>

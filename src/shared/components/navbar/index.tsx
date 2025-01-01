@@ -25,6 +25,9 @@ const Navbar = () => {
           </div>
         }
       />
+      <Button>
+        <Link href="/survivor-quiz">Take the Survivor Quiz</Link>
+      </Button>
       <ScrollButton text="Watch Survivor" elementId={WATCH_PARAMOUNT} />
       <ScrollButton
         text="Post Season Photos"
