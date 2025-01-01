@@ -24,8 +24,7 @@ import {
   FormLabel,
 } from "@/shared/components/ui/form";
 import getClosestMatch from "./utils/getClosestMatch";
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import getMatchedPlayerImage from "./utils/getMatchedPlayerImage";
 
 const questionsIndexes = newEraPlayers[0].questions.map(
@@ -55,126 +54,18 @@ export const FormSchema = z.object({
 });
 
 const WhichPlayerAreYouQuiz = () => {
-  const [players, setPlayers] = useState<Record<string, any>[]>(null);
-  const [canvasImage, setCanvasImage] = useState<string | null>(null);
-  const canvasRef = useRef(null);
+  const [players, setPlayers] = useState<Record<string, any>[] | undefined>();
+  const [canvasImage, setCanvasImage] = useState<string | undefined>();
+  const [canvas, setCanvas] = useState<HTMLCanvasElement | undefined>();
   const { toast } = useToast();
   const questions: Record<string, any>[] = newEraPlayers[0].questions;
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
 
-  // useEffect(() => {
-  //   if (canvasImage) {
-  //     return;
-  //   }
-  //   const getImage = new Promise<HTMLImageElement>((resolve, revoke) => {
-  //     let img = document.createElement("img");
-
-  //     img.onload = () => {
-  //       resolve(img);
-  //     };
-
-  //     img.crossOrigin = "Anonymous";
-  //     img.src = "/quiz/Rachel_LaMont.webp";
-  //   });
-
-  //   const getLogo = new Promise<HTMLImageElement>((resolve, revoke) => {
-  //     let img = document.createElement("img");
-
-  //     img.onload = () => {
-  //       resolve(img);
-  //     };
-
-  //     img.crossOrigin = "Anonymous";
-  //     img.src = "/survivor-tribe-logo.png";
-  //   });
-
-  //   const getCanvasImage = async () => {
-  //     let canvas = document.createElement("canvas");
-  //     const ctx = canvas.getContext("2d");
-
-  //     canvas.width = 1280;
-  //     canvas.height = 900;
-
-  //     if (ctx) {
-  //       ctx.fillStyle = "white";
-  //       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  //       getImage.then((img: HTMLImageElement) => {
-  //         ctx.drawImage(img, 20, 20, 550, 800);
-  //         ctx.fillStyle = "black";
-  //         ctx.font = "bold 30px Arial";
-  //         ctx.fillText("You match with Rachel LaMont!", 600, 100);
-
-  //         ctx.font = "30px Arial";
-  //         const text =
-  //           "From her impressive puzzle-solving skills to her strategic gameplay, Rachel was a force to be reckoned with. After facing blindsides and navigating tricky alliances, she emerged stronger than ever. With a mix of luck and skill, Rachel capitalized on every opportunity that came her way. By the time she reached the Final Tribal Council, her impressive résumé spoke volumes, leading to a well-deserved victory as Sole Survivor!";
-
-  //         const words = text.split(" ");
-  //         let line = "";
-  //         let y = 180;
-  //         const maxWidth = canvas.width - 620;
-
-  //         for (let i = 0; i < words.length; i++) {
-  //           const testLine = line + words[i] + " ";
-  //           const metrics = ctx.measureText(testLine);
-  //           const testWidth = metrics.width;
-
-  //           if (testWidth > maxWidth && i > 0) {
-  //             ctx.fillText(line, 600, y);
-  //             line = words[i] + " ";
-  //             y += 40; // Reduced line height for better fit
-  //           } else {
-  //             line = testLine;
-  //           }
-  //         }
-  //         ctx.fillText(line, 600, y);
-  //         ctx.imageSmoothingQuality = "high";
-
-  //         getLogo.then((logo: HTMLImageElement) => {
-  //           const bottomRightWidth = 450;
-  //           const bottomRightHeight = 250;
-  //           ctx.drawImage(
-  //             logo,
-  //             canvas.width - bottomRightWidth,
-  //             canvas.height - bottomRightHeight - 20,
-  //             bottomRightWidth,
-  //             bottomRightHeight
-  //           );
-  //           const survivorText = "survivortribe.fyi";
-  //           const textMetrics = ctx.measureText(survivorText);
-  //           const textWidth = textMetrics.width;
-  //           ctx.font = "20px Arial";
-
-  //           ctx.fillText(
-  //             survivorText,
-  //             canvas.width - textWidth - 90,
-  //             canvas.height - 20
-  //           );
-
-  //           const imageSrc = canvas.toDataURL("image/jpeg");
-  //           setCanvasImage(imageSrc);
-
-  //           canvas.toBlob((blob) => {
-  //             let data = window.URL.createObjectURL(blob!);
-  //             let link = document.createElement("a");
-  //             link.href = data;
-  //             link.download = "feed.jpg";
-  //             link.click();
-  //           }, "image/jpeg");
-  //         });
-  //       });
-  //     }
-  //   };
-
-  //   getCanvasImage();
-  // }, [canvasImage]);
-
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const playersMatched = getClosestMatch({ data });
     setPlayers(playersMatched);
-    console.log({ playersMatched, data });
 
     const imgSrc = await getMatchedPlayerImage({
       title: playersMatched[0].player,
@@ -182,17 +73,21 @@ const WhichPlayerAreYouQuiz = () => {
       imgSrc: playersMatched[0].imgSrc,
     });
 
-    console.log({ imgSrc });
-    setCanvasImage(imgSrc);
-    // toast({
-    //   title: "Here's your points",
-    //   description: <span>{JSON.stringify(players)}</span>,
-    // });
-
-    // setCanvas(ctx);
-    // console.log({ ctx });
-    // document.body.appendChild(canvas);
+    setCanvasImage(imgSrc?.imgSrc);
+    setCanvas(imgSrc?.canvas);
   }
+
+  const downloadImage = () => {
+    if (canvas) {
+      canvas.toBlob((blob) => {
+        let data = window.URL.createObjectURL(blob!);
+        let link = document.createElement("a");
+        link.href = data;
+        link.download = "survivor-tribe-match-player.jpg";
+        link.click();
+      }, "image/jpeg");
+    }
+  };
 
   return (
     <>
@@ -212,11 +107,15 @@ const WhichPlayerAreYouQuiz = () => {
               winner from seasons 41-47 matches your style!
             </DialogDescription>
           </DialogHeader>
-          {/* <canvas ref={canvasRef} /> */}
-          <img src={canvasImage} />
+          {canvasImage ? (
+            <div className="flex flex-col gap-2">
+              <Button onClick={downloadImage}>Download Image</Button>
+              <img src={canvasImage} />
+            </div>
+          ) : null}
           {players ? (
             <>
-              {players.map((player, index) => {
+              {/* {players.map((player, index) => {
                 return (
                   <div key={index} className="flex justify-center items-center">
                     <div className="flex flex-col items-center text-center gap-2">
@@ -231,7 +130,7 @@ const WhichPlayerAreYouQuiz = () => {
                     </div>
                   </div>
                 );
-              })}
+              })} */}
             </>
           ) : (
             <Form {...form}>

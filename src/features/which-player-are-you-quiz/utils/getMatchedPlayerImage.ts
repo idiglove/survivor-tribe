@@ -1,4 +1,14 @@
-const getMatchedPlayerImage = async ({ title, summary, imgSrc }) => {
+type GetMatchedPlayerImageProps = {
+  title: string;
+  summary: string;
+  imgSrc: string;
+};
+
+const getMatchedPlayerImage = async ({
+  title,
+  summary,
+  imgSrc,
+}: GetMatchedPlayerImageProps) => {
   const getImage = new Promise<HTMLImageElement>((resolve, revoke) => {
     let img = document.createElement("img");
 
@@ -33,7 +43,7 @@ const getMatchedPlayerImage = async ({ title, summary, imgSrc }) => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       return getImage.then((img: HTMLImageElement) => {
-        ctx.drawImage(img, 20, 100, 550, 800);
+        ctx.drawImage(img, 20, 80, 550, 800);
         ctx.fillStyle = "black";
         ctx.font = "bold 40px Arial";
         ctx.fillText("You match with this player!", 30, 50);
@@ -85,16 +95,7 @@ const getMatchedPlayerImage = async ({ title, summary, imgSrc }) => {
           );
 
           const imageSrc = canvas.toDataURL("image/jpeg");
-          return imageSrc;
-          // setCanvasImage(imageSrc);
-
-          // canvas.toBlob((blob) => {
-          //   let data = window.URL.createObjectURL(blob!);
-          //   let link = document.createElement("a");
-          //   link.href = data;
-          //   link.download = "feed.jpg";
-          //   link.click();
-          // }, "image/jpeg");
+          return { imgSrc: imageSrc, canvas };
         });
       });
     }
