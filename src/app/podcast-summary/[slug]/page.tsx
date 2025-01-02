@@ -1,7 +1,5 @@
 import dynamic from "next/dynamic";
-import Image from "next/image";
-import Link from "next/link";
-import Logo from "@/assets/survivor-tribe-logo.png";
+import OtherNavbar from "@/shared/components/other-navbar";
 
 export default async function PodcastSummary({
   params,
@@ -29,11 +27,7 @@ export default async function PodcastSummary({
   return (
     <>
       <main>
-        <div className="w-full h-full min-h-[300px] flex flex-col items-center justify-center gap-5">
-          <Link href="/">
-            <Image src={Logo} alt="Survivor Tribe Logo" width={400} />
-          </Link>
-        </div>
+        <OtherNavbar />
         <div className="w-full max-w-[900px] mx-auto px-4">
           <DynamicSummary />
         </div>
