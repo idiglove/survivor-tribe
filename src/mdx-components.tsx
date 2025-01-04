@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import Image, { ImageProps } from "next/image";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -25,13 +26,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </blockquote>
     ),
-    // img: (props) => (
-    //   <Image
-    //     sizes="100vw"
-    //     style={{ width: "100%", height: "auto" }}
-    //     {...(props as ImageProps)}
-    //   />
-    // ),
+    img: (props) => (
+      <span className="flex justify-center">
+        <Image
+          width={200}
+          height={200}
+          style={{ objectFit: "cover" }}
+          {...(props as ImageProps)}
+          alt={props.alt ?? "Survivor Tribe"}
+        />
+      </span>
+    ),
     ...components,
   };
 }
