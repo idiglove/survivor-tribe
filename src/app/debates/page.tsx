@@ -1,5 +1,11 @@
 import DebatesThread from "@/features/debates-thread";
 import OtherNavbar from "@/shared/components/other-navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Submit your Survivor Fan Theories - Survivor Tribe",
+  description: "Send your Survivor Fan Theories and debate with others",
+};
 
 export default async function DebatesPage() {
   return (

@@ -1,5 +1,12 @@
 import dynamic from "next/dynamic";
 import OtherNavbar from "@/shared/components/other-navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Survivor Podcast Summary - Survivor Tribe",
+  description:
+    "Get bite-sized content summarized from your favorite Survivor podcasts.",
+};
 
 export default async function PodcastSummary({
   params,

@@ -1,5 +1,12 @@
 import OtherNavbar from "@/shared/components/other-navbar";
 import Post from "./markdown/index.mdx";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Top Moments from Survivor 47 Finale - Survivor Tribe",
+  description:
+    "Explore the thrilling finale of Survivor 47. Did the fire making challenge steal the show?",
+};
 
 export default function Page() {
   return (
