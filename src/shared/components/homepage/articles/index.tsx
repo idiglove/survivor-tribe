@@ -29,6 +29,16 @@ const ArticlesHomepage = () => {
           </Button>
         </CardFooter>
       </Card>
+      <Card>
+        <CardHeader>
+          How Jury Management Impacts Survivor&apos;s Million-Dollar Vote
+        </CardHeader>
+        <CardFooter>
+          <Button className="whitespace-normal p-6">
+            <Link href="/posts/jury-management">Learn from this article</Link>
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 };
