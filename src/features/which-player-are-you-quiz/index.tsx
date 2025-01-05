@@ -25,7 +25,6 @@ import getClosestMatch from "./utils/getClosestMatch";
 import { useState } from "react";
 import getMatchedPlayerImage from "./utils/getMatchedPlayerImage";
 import { useRouter } from "next/navigation";
-import GetUpdateButton from "../coming-soon/components/get-update-button";
 
 const questionsIndexes = newEraPlayers[0].questions.map(
   (_, index) => `question-${index}`
@@ -121,14 +120,22 @@ const WhichPlayerAreYouQuiz = () => {
           {canvasImage ? (
             <div className="flex flex-col gap-2">
               <Button onClick={downloadImage}>Download Image</Button>
-              <img src={canvasImage} />
+              <img src={canvasImage} alt="download" />
             </div>
           ) : null}
           {players && !canvasImage ? (
-            <GetUpdateButton
-              text="Subscribe first to get more updates"
-              onSubscribe={showResults}
-            />
+            <div className="flex flex-col gap-2 items-center">
+              <Button variant="secondary">
+                <a
+                  href="https://discord.gg/C5dTyfnt8R"
+                  target="__blank"
+                  onClick={showResults}
+                >
+                  We would love you to join our Discord Server first!
+                </a>
+              </Button>
+              <p className="text-sm">Join our Discord and get the image for free</p>
+            </div>
           ) : null}
 
           {!players && !canvasImage ? (
