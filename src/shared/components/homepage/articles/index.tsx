@@ -39,6 +39,16 @@ const ArticlesHomepage = () => {
           </Button>
         </CardFooter>
       </Card>
+      <Card>
+        <CardHeader>Wild Survivor Alliances That Changed Everything</CardHeader>
+        <CardFooter>
+          <Button className="whitespace-normal p-6">
+            <Link href="/posts/wild-survivor-alliances-that-changed-everything">
+              Read it
+            </Link>
+          </Button>
+        </CardFooter>
+      </Card>
     </div>
   );
 };
