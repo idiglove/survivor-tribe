@@ -125,16 +125,30 @@ const WhichPlayerAreYouQuiz = () => {
           ) : null}
           {players && !canvasImage ? (
             <div className="flex flex-col gap-2 items-center">
+              <p className="text-sm">
+                Join our Discord and get the image for free. On our Discord, you
+                get to:
+              </p>
+              <ul className="list-disc list-inside text-sm">
+                <li>
+                  Talk with other Survivor Fans about current and upcoming
+                  seasons
+                </li>
+                <li>Suggest features you want to see on our website</li>
+                <li>Share memes with others</li>
+                <li>Share stories and discuss about Survivor cast members</li>
+                <li>And many more for free!</li>
+              </ul>
               <Button variant="secondary">
                 <a
                   href="https://discord.gg/C5dTyfnt8R"
                   target="__blank"
                   onClick={showResults}
                 >
-                  We would love you to join our Discord Server first!
+                  Join our Discord!
                 </a>
               </Button>
-              <p className="text-sm">Join our Discord and get the image for free</p>
+              <Button onClick={showResults}>Get the image for Free</Button>
             </div>
           ) : null}
 
