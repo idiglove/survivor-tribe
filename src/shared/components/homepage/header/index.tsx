@@ -3,11 +3,15 @@ import Image from "next/image";
 import Logo from "@/assets/survivor-tribe-logo.png";
 import Navbar from "../../navbar";
 import { Button } from "../../ui/button";
-
+import VisitorCounter from "../../visitor-counter/VisitorCounter";
 const HomepageHeader = () => {
   return (
-    <header className="text-center mt-16">
+    <header className="text-center">
+
+<VisitorCounter />
+<div className="mt-14">
       <Navbar />
+      </div>
       <div className="w-full h-full min-h-[300px] flex flex-col items-center justify-center gap-5">
         <Link href="/">
           <Image src={Logo} alt="Survivor Tribe Logo" width={400} />

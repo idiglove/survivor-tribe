@@ -4,23 +4,41 @@ import { useEffect, useState } from 'react';
 import { getVisitorCount } from '../../../app/actions/getVisitorCount';
 
 const VisitorCounter = () => {
-  const [visitorCount, setVisitorCount] = useState<number>(0);
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchVisitorCount = async () => {
-      const count = await getVisitorCount();
-      setVisitorCount(count);
+      try {
+        const count = await getVisitorCount();
+        setVisitorCount(count);
+      } catch (err) {
+        setError('Failed to load visitor count. Please try again later.');
+      }
     };
 
     fetchVisitorCount();
-    const interval = setInterval(fetchVisitorCount, 5000);
-
-    return () => clearInterval(interval);
   }, []);
 
+  if (error) {
+    return (
+      <div className="fixed top-0 left-0 w-full text-center bg-red-500 py-2 text-lg font-bold text-white z-50 shadow-md">
+        ⚠️ {error}
+      </div>
+    );
+  }
+
+  if (visitorCount === null) {
+    return (
+      <div className="fixed top-0 left-0 w-full text-center bg-gray-400 py-2 text-lg font-bold text-white z-50 shadow-md">
+        ⏳ Loading visitor count...
+      </div>
+    );
+  }
+
   return (
-    <div className="fixed top-0 left-0 w-full text-center bg-green-400 py-2 text-lg font-bold z-50 shadow-md">
-      👀 {visitorCount} visitors are currently online!
+    <div className="fixed top-0 left-0 w-full text-center bg-blue-500 py-2 text-lg font-bold text-white z-50 shadow-md">
+      🌎 {visitorCount} people have visited this site this month!
     </div>
   );
 };

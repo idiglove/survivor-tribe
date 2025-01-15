@@ -2,27 +2,31 @@
 
 export async function getVisitorCount() {
   try {
-    const response = await fetch(`https://us.posthog.com/api/projects/${process.env.POSTHOG_PROJECT_ID}/events/`, {
-      method: 'GET',
+    const startOfMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString();
+
+    const response = await fetch(`https://us.posthog.com/api/projects/${process.env.POSTHOG_PROJECT_ID}/insights/trend/`, {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.POSTHOG_PERSONAL_API_KEY}`,
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        events: [{ id: '$pageview', type: 'events' }],
+        date_from: startOfMonth,
+        interval: 'month',
+      }),
     });
+
+    if (!response.ok) {
+      throw new Error(`PostHog API Error: ${response.status} ${response.statusText}`);
+    }
 
     const data = await response.json();
+    const totalVisitors = data?.result?.[0]?.count ?? 0;
 
-    const recentPageviews = data.results.filter((event: any) => {
-      const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
-      return event.event === '$pageview' && event.timestamp > fiveMinutesAgo;
-    });
-
-    // Count unique visitors based on distinct_id
-    const uniqueVisitors = new Set(recentPageviews.map((event: any) => event.distinct_id)).size;
-
-    return uniqueVisitors;
+    return totalVisitors;
   } catch (error) {
-    console.error('Error fetching events:', error);
-    return 0;
+    console.error('Error fetching monthly visitors:', error);
+    throw error;
   }
 }
