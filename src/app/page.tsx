@@ -12,7 +12,6 @@ export default function Home() {
     <>
       <main>
         <HomepageHeader />
-
         <div className="w-full max-w-[1200px] mx-auto px-4 flex flex-col sm:flex-row gap-15">
           <div className="w-full sm:w-[60%] md:w-[80%]">
             <SocialMediaPostSeason />
