@@ -10,7 +10,6 @@ const VisitorCounter = () => {
     const fetchVisitorCount = async () => {
       try {
         const count = await getVisitorCount();
-        
         setVisitorCount(count);
       } catch (err) {
         console.error('Error fetching visitor count:', err);
@@ -19,10 +18,7 @@ const VisitorCounter = () => {
 
     fetchVisitorCount();
 
-    const interval = setInterval(() => {
-      console.log('Refreshing visitor count...');
-      fetchVisitorCount();
-    }, 30000);
+    const interval = setInterval(fetchVisitorCount, 30000);
 
     return () => clearInterval(interval);
   }, []);
