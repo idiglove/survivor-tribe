@@ -9,7 +9,7 @@ const HomepageHeader = () => {
     <header className="text-center">
 
 <VisitorCounter />
-<div className="mt-14">
+<div className="mt-20 sm:mt-14">
       <Navbar />
       </div>
       <div className="w-full h-full min-h-[300px] flex flex-col items-center justify-center gap-5">
