@@ -6,7 +6,7 @@ import { Button } from "../../ui/button";
 
 const HomepageHeader = () => {
   return (
-    <header className="text-center">
+    <header className="text-center mt-16">
       <Navbar />
       <div className="w-full h-full min-h-[300px] flex flex-col items-center justify-center gap-5">
         <Link href="/">
