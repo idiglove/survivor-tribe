@@ -8,7 +8,7 @@ interface PostHogProviderProps {
 }
 
 const PostHogProvider = ({ children }: PostHogProviderProps) => {
-  const isInitialized = useRef(false);  // Prevents re-initialization
+  const isInitialized = useRef(false); 
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_POSTHOG_KEY && !isInitialized.current) {

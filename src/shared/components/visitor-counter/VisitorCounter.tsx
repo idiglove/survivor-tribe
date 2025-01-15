@@ -13,6 +13,7 @@ const VisitorCounter = () => {
         const count = await getVisitorCount();
         setVisitorCount(count);
       } catch (err) {
+        console.error('Error fetching visitor count:', err); // Log the error
         setError('Failed to load visitor count. Please try again later.');
       }
     };
