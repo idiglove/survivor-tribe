@@ -25,7 +25,7 @@ const Navbar = () => {
           </div>
         }
       />
-      <Button>
+      <Button asChild>
         <Link href="/survivor-quiz">Take the Survivor Quiz</Link>
       </Button>
       <ScrollButton text="Watch Survivor" elementId={WATCH_PARAMOUNT} />
@@ -38,7 +38,7 @@ const Navbar = () => {
         text="Coming Soon Features"
         elementId={COMING_SOON_ELEMENT_ID}
       />
-      <Button>
+      <Button asChild>
         <Link href="/debates">Debates</Link>
       </Button>
     </div>

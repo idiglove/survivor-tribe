@@ -13,7 +13,7 @@ const HomepageHeader = () => {
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-[#402E321F]">
             <p className="text-[#402E32] text-6xl font-bold">survivor tribe</p>
-            <p className="font-bold text-3xl text-white font-semibold">
+            <p className="text-3xl text-white font-semibold">
               Be a part of the ultimate Survivor Fan Site
             </p>
           </div>
