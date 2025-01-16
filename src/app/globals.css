@@ -4,6 +4,11 @@
 
 body {
   font-family: "Ubuntu Sans", Helvetica, sans-serif;
+  background-color: #dfe0df;
+  background-image: url("../assets/orange-shape-bg.png");
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 1500px;
 }
 
 @layer utilities {
