@@ -18,6 +18,13 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        secondaryCard: {
+          DEFAULT: "hsl(var(--secondary-card))",
+          background: "hsl(var(--card-background))",
+        },
+        cardNoBg: {
+          DEFAULT: "hsl(var(--secondary-card))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -29,6 +36,10 @@ const config: Config = {
         secondary: {
           DEFAULT: "#ff8e1a",
           foreground: "hsl(var(--secondary-foreground))",
+        },
+        brown: {
+          DEFAULT: "#402E32",
+          foreground: "hsl(var(--brown-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -57,6 +68,12 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundImage: {
+        homepage: "url('../assets/orange-shape-bg.png')",
+      },
+      container: {
+        center: true,
       },
     },
   },
