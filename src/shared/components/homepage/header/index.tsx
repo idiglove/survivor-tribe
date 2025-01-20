@@ -1,30 +1,42 @@
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/assets/survivor-tribe-logo.png";
-import Navbar from "../../navbar";
-import { Button } from "../../ui/button";
+import HeroImg from "@/assets/jeff_probst.png";
 import VisitorCounter from "../../visitor-counter/VisitorCounter";
+import { Button } from "../../ui/button";
+import Navbar from "../../navbar";
+
 const HomepageHeader = () => {
   return (
     <header className="text-center">
+      <VisitorCounter />
+      {/* <div className="w-full flex flex-col items-center justify-center gap-5 bg-homepage h-dvh object-center absolute"></div> */}
+      <div className="bg-homepage bg-repeat bg-cover bg-center h-screen">
+        <div className="flex flex-wrap-reverse items-center justify-center pt-20">
+          <div className="outline outline-1 outline-white bg-amber-950 m-10 p-10 w-1/3 bg-opacity-10 rounded">
+            <div className="bg-cardNoBg text-start relative">
+              <div className="relative z-10">
+                <p className="text-brown-foreground text-6xl font-bold text-amber-950">
+                  survivor tribe
+                </p>
+                <p className="text-3xl text-white font-semibold">
+                  Be a part of the ultimate Survivor Fan Site
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <Image src={HeroImg} alt="Jeff Probst" width={531} />
+          </div>
+        </div>
 
-<VisitorCounter />
-<div className="mt-20 sm:mt-14">
-      <Navbar />
-      </div>
-      <div className="w-full h-full min-h-[300px] flex flex-col items-center justify-center gap-5">
-        <Link href="/">
-          <Image src={Logo} alt="Survivor Tribe Logo" width={400} />
-        </Link>
-        <Button variant="secondary">
-          <a href="https://discord.gg/C5dTyfnt8R" target="__blank">
-            Join our Discord Server!
-          </a>
-        </Button>
-        <h3 className="font-bold">
-          Get all updates about Survivor Season 47 and upcoming seasons!
-        </h3>
-        <h4>Be a part of the ultimate Survivor Fan Community</h4>
+        {/* Primary container with navbar and carousel */}
+        <div className="bg-white h-96 container w-2/3">
+          <Button variant="secondary">
+            <a href="https://discord.gg/C5dTyfnt8R" target="__blank">
+              Join our Discord Server!
+            </a>
+          </Button>
+        </div>
       </div>
     </header>
   );

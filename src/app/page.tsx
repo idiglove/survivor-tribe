@@ -10,7 +10,7 @@ import PodcastSummaryHomepage from "@/shared/components/homepage/podcast-summary
 export default function Home() {
   return (
     <>
-      <main>
+      <main className="bg-gray-200">
         <HomepageHeader />
         <div className="w-full max-w-[1200px] mx-auto px-4 flex flex-col sm:flex-row gap-15">
           <div className="w-full sm:w-[60%] md:w-[80%]">

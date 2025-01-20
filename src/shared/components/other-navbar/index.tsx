@@ -5,7 +5,7 @@ import { Button } from "@/shared/components/ui/button";
 
 const OtherNavbar = () => {
   return (
-    <div className="w-full h-full min-h-[300px] flex flex-col items-center justify-center gap-5">
+    <div className="my-5 w-full h-full min-h-[300px] flex flex-col items-center justify-center gap-5">
       <Link href="/">
         <Image src={Logo} alt="Survivor Tribe Logo" width={400} />
       </Link>
